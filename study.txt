@@ -29,4 +29,7 @@ static int __init ModuleInit(void) {
 	return 0;
 }
 
-03
+03 read/write 추가
+copy_to_user
+copy_from_user
+
