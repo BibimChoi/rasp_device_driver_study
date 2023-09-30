@@ -33,3 +33,9 @@ static int __init ModuleInit(void) {
 copy_to_user
 copy_from_user
 
+기본 charactor device 추가 방법
+alloc_chrdev_region(&my_device_nr, 0, 1, DRIVER_NAME)
+class_create(THIS_MODULE, DRIVER_CLASS))
+device_create(my_class, NULL, my_device_nr, NULL, DRIVER_NAME)
+cdev_init(&my_device, &fops);
+cdev_add(&my_device, my_device_nr, 1)
