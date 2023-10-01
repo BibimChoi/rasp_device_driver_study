@@ -39,3 +39,12 @@ class_create(THIS_MODULE, DRIVER_CLASS))
 device_create(my_class, NULL, my_device_nr, NULL, DRIVER_NAME)
 cdev_init(&my_device, &fops);
 cdev_add(&my_device, my_device_nr, 1)
+
+
+
+13 ioctl h 파일 이런것들이 ioctl 이동 가능하게 함
+#define WR_VALUE _IOW('a', 'a', int32_t *)
+#define RD_VALUE _IOR('a', 'b', int32_t *)
+#define GREETER  _IOW('a', 'c', struct mystruct *)
+
+
