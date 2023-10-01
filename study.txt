@@ -62,4 +62,19 @@ module_param(device_name, charp, S_IRUGO);
 #define RD_VALUE _IOR('a', 'b', int32_t *)
 #define GREETER  _IOW('a', 'c', struct mystruct *)
 
+14 kthread 사용법
+#include <linux/kthread.h>
+#include <linux/sched.h>
+static struct task_struct *kthread_1;
+static struct task_struct *kthread_2;
+ 1. 
+  kthread_1 = kthread_create(thread_function, &t1, "kthread_1");
+  wake_up_process(kthread_1);
+
+  kthread_stop(kthread_1);
+ 2. 
+  kthread_2 = kthread_run(thread_function, &t2, "kthread_2");
+
+  kthread_stop(kthread_2);
+
 
