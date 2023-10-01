@@ -40,6 +40,21 @@ device_create(my_class, NULL, my_device_nr, NULL, DRIVER_NAME)
 cdev_init(&my_device, &fops);
 cdev_add(&my_device, my_device_nr, 1)
 
+11 irq
+#include <linux/interrupt.h>
+
+        /* Setup the interrupt */
+// gpio_irq_handler 는 함수
+irq_number = gpio_to_irq(17);
+request_irq(irq_number, (irq_handler_t) gpio_irq_handler, IRQF_TRIGGER_RISING, "my_gpio_irq", NULL);
+           
+12 param
+/* Kernel Module's Paramerters*/
+static unsigned int gpio_nr = 12;
+static char *device_name = "testdevice";
+
+module_param(gpio_nr, uint, S_IRUGO);
+module_param(device_name, charp, S_IRUGO);
 
 
 13 ioctl h 파일 이런것들이 ioctl 이동 가능하게 함
